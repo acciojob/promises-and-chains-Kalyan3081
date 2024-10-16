@@ -1,21 +1,26 @@
-//your JS code here. If required.
-const vote=new Promise((resolve, reject)=>{
-	if (age>18) {
-		resolve: you can vote
-	}else{
-		reject: you cant vote
-	}
-})
+document.getElementById("form").addEventListener('submit', function (e) {
+            e.preventDefault();
+        })
+        const ageinput = document.getElementById('age').value
+        const nameinput = document.getElementById('name').value
 
-.then((message)=>{
-	console.log(`Welcome, ${name}. You can vote`)
-})
-.catch((error)=>{
-	console.log(`Oh sorry ${name}. You aren't old enough`)
-})
+        if (ageinput === "" || nameinput === "") {
+            alert("Please fill in the form");
+        }
+        return;
 
-
-
-
-
-
+        new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                if (ageinput < 18) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            }, 4000)
+        })
+            .then(function () {
+                console.log(`Welcome, ${nameinput}. You can vote`);
+            })
+            .catch(function () {
+                console.log(`Oh sorry ${nameinput}. You aren't old enough.`)
+            })
